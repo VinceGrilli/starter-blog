@@ -18,9 +18,10 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          description
         }
       }
-      file(relativePath: { eq: "gatsby-icon.png" }) {
+      file(relativePath: { eq: "MyDesktopPic.png" }) {
         childImageSharp {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid
@@ -34,6 +35,7 @@ const Layout = ({ children }) => {
     <>
       <Header
         siteTitle={data.site.siteMetadata.title}
+        siteDescription={data.site.siteMetadata.description}
         icon={data.file.childImageSharp.fluid}
       />
 

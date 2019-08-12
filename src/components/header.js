@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Header = ({ siteTitle, icon }) => {
+const Header = ({ siteTitle, siteDescription, icon }) => {
   return (
     <header
       style={{
@@ -26,6 +26,8 @@ const Header = ({ siteTitle, icon }) => {
               textDecoration: `none`,
             }}
           >
+            {siteTitle}
+            {siteDescription}
             <Img
               fluid={icon}
               style={{
