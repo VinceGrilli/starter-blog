@@ -1,5 +1,5 @@
 ---
-slug: 'third-post'
+slug: '/third-post'
 date: '2019-8-14'
 title: 'My third Post'
 ---
