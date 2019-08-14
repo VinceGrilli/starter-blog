@@ -6,23 +6,25 @@ import { graphql } from 'gatsby';
 
 // Page Query must be used on pages
 
-export default function postLayout() {
+const postLayout = () => {
   return (
     <Layout>
       <h1>Post Layout</h1>
     </Layout>
   );
-}
+};
 
-export const query = graphql`
-  query PostQuery {
-    markdownRemark(frontmatter: { slug: { eq: "/third-post" } }) {
-      html
-      frontmatter {
-        title
-        date
-        slug
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query PostQuery($slug: String!) {
+//     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+//       html
+//       frontmatter {
+//         title
+//         date
+//         slug
+//       }
+//     }
+//   }
+// `;
+
+export default postLayout;
