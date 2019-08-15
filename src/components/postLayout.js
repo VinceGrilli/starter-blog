@@ -6,25 +6,31 @@ import { graphql } from 'gatsby';
 
 // Page Query must be used on pages
 
-const postLayout = () => {
+const postLayout = ({ data }) => {
+  const { markdownRemark } = data;
   return (
     <Layout>
-      <h1>Post Layout</h1>
+      <h1>{markdownRemark.frontmatter.title}</h1>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: markdownRemark.html,
+        }}
+      />
     </Layout>
   );
 };
 
-// export const query = graphql`
-//   query PostQuery($slug: String!) {
-//     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-//       html
-//       frontmatter {
-//         title
-//         date
-//         slug
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query PostQuery($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        date
+        slug
+      }
+    }
+  }
+`;
 
 export default postLayout;
