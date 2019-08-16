@@ -1,23 +1,28 @@
+import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import React from 'react';
+import logo from '../images/brain-jar.jpg';
+
+const HeaderWrapper = styled.div`
+  background: #4c4744;
+  margin-bottom: 1.45rem;
+`;
+
+const HeaderContainer = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1rem;
+  img {
+    margin-bottom: 0;
+  }
+`;
 
 const Header = ({ siteTitle, siteDescription, icon }) => {
   return (
-    <header
-      style={{
-        background: `rebeccapurple`,
-        marginBottom: `1.45rem`,
-      }}
-    >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-        }}
-      >
+    <HeaderWrapper>
+      <HeaderContainer>
         <h1 style={{ margin: 0 }}>
           <Link
             to="/"
@@ -26,18 +31,17 @@ const Header = ({ siteTitle, siteDescription, icon }) => {
               textDecoration: `none`,
             }}
           >
-            {siteTitle}
-            {siteDescription}
-            <Img
-              fluid={icon}
+            <img
               style={{
                 width: '100px',
               }}
+              src={logo}
             />
+            {siteDescription}
           </Link>
         </h1>
-      </div>
-    </header>
+      </HeaderContainer>
+    </HeaderWrapper>
   );
 };
 
