@@ -6,10 +6,10 @@ import { graphql } from 'gatsby';
 
 // Page Query must be used on pages
 
-const postLayout = ({ data }) => {
+const postLayout = ({ data, location }) => {
   const { markdownRemark } = data;
   return (
-    <Layout>
+    <Layout location={location}>
       <h1>{markdownRemark.frontmatter.title}</h1>
       <div
         dangerouslySetInnerHTML={{

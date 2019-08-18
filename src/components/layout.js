@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Header from './header';
 import './layout.css';
@@ -14,7 +15,7 @@ const MainLayout = styled.main`
   grid-gap: 40px;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,16 +24,16 @@ const Layout = ({ children }) => {
           description
         }
       }
-      file(relativePath: { eq: "MyDesktopPic.png" }) {
+      file(relativePath: { eq: "desktop-pic.png" }) {
         childImageSharp {
           fluid(maxWidth: 1000) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
     }
   `);
-  console.log(data);
+
   return (
     <>
       <Header
@@ -40,6 +41,9 @@ const Layout = ({ children }) => {
         siteDescription={data.site.siteMetadata.description}
         icon={data.file.childImageSharp.fluid}
       />
+      {location.pathname === '/' && (
+        <Img fluid={data.file.childImageSharp.fluid} />
+      )}
       <MainLayout>
         <div>{children}</div>
         <Archive />
