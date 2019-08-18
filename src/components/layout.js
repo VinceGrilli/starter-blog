@@ -10,7 +10,7 @@ import Archive from '../components/archive';
 
 const MainLayout = styled.main`
   max-width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto;
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 40px;
@@ -34,8 +34,13 @@ const Layout = ({ children, location }) => {
       }
     }
   `);
-  const styles = useSpring({ from: { height: 100 } }, { to: { height: 300 } });
-
+  const [styles, set, stop] = useSpring(() => ({
+    height: location.pathname === '/' ? 100 : 500,
+  }));
+  set(
+    { to: { height: location.pathname === '/' ? 500 : 100 } },
+    { from: { height: location.pathname === '/' ? 100 : 500 } }
+  );
   return (
     <>
       <Header
@@ -46,8 +51,6 @@ const Layout = ({ children, location }) => {
       <animated.div style={{ overflow: 'hidden', ...styles }}>
         <Img fluid={data.file.childImageSharp.fluid} />
       </animated.div>
-      {/* {location.pathname === '/' && (
-      )} */}
       <MainLayout>
         <div>{children}</div>
         <Archive />
