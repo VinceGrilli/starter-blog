@@ -4,10 +4,11 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import logo from '../images/brain-jar.jpg';
+import { relative } from 'path';
 
 const HeaderWrapper = styled.div`
   background: #4c4744;
-  margin-bottom: 1.45rem;
+  margin-bottom: 0;
 `;
 
 const HeaderContainer = styled.div`
@@ -37,7 +38,7 @@ const Header = ({ siteTitle, siteDescription, icon }) => {
               }}
               src={logo}
             />
-            {siteDescription}
+            <span>{siteDescription}</span>
           </Link>
         </h1>
       </HeaderContainer>

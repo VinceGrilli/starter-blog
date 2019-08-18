@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
 import Header from './header';
 import './layout.css';
@@ -33,6 +34,7 @@ const Layout = ({ children, location }) => {
       }
     }
   `);
+  const styles = useSpring({ from: { height: 100 } }, { to: { height: 300 } });
 
   return (
     <>
@@ -41,9 +43,11 @@ const Layout = ({ children, location }) => {
         siteDescription={data.site.siteMetadata.description}
         icon={data.file.childImageSharp.fluid}
       />
-      {location.pathname === '/' && (
+      <animated.div style={{ overflow: 'hidden', ...styles }}>
         <Img fluid={data.file.childImageSharp.fluid} />
-      )}
+      </animated.div>
+      {/* {location.pathname === '/' && (
+      )} */}
       <MainLayout>
         <div>{children}</div>
         <Archive />
