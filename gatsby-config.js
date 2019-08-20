@@ -3,8 +3,10 @@ module.exports = {
     title: `Vince Grilli`,
     description: `Starter Blog for learnin real good n stuff`,
     author: `@VinceGrilli`,
+    siteUrl: `https://adoring-jang-d07e3d.netlify.com/`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
@@ -26,19 +28,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Starter Blog`,
+        short_name: `startBlog`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#4c4744`,
+        theme_color: `#4c4744`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/brain-jar.jpg`,
       },
     },
     'gatsby-transformer-remark',
+    `gatsby-plugin-netlify-cms`,
     'gatsby-plugin-netlify',
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 };
